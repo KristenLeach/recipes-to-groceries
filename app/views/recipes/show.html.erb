@@ -1,0 +1,18 @@
+<h3><%= @recipe.name %></h3>
+
+<%= image_tag @recipe.image.profile.url %>
+<br>
+<p><%= @recipe.description %></p>
+<br>
+<label>Ingredients:</label>
+    <ul>
+      <% @recipe.ingredients.each do |ingredient| %>
+        <li><%= ingredient %></li>
+      <% end %>
+    </ul>
+
+<p><%= @recipe.directions %></p>
+
+<% if current_user.recipes.include?(@recipe) %>
+    <%= link_to "Edit Recipe", edit_user_recipe_path(current_user, @recipe)%>
+    <%= link_to "Delete Recipe", destroy_user_recipe_path(current_user, @recipe)%>

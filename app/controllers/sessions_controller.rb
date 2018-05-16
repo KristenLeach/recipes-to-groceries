@@ -10,6 +10,10 @@ class SessionsController < ApplicationController
    
       render 'welcome/home'
     end
+
+    def destroy
+        reset_session
+    end
    
     private
    
