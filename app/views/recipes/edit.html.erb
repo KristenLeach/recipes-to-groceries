@@ -1,0 +1,14 @@
+<h3>Edit Your Recipe</h3>
+
+<% if @recipe.errors.any? %>
+  <div id="error_explanation">
+    <h2> Recipe Failed </h2>
+    <ul>
+    <% @recipe.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= render partial: 'form', locals: {recipe: @recipe} %>

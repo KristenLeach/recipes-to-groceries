@@ -1,0 +1,9 @@
+<%= form_for recipe do |f| %>
+    name<%= f.text_field :name %>
+    description<%= f.text_area :description %>
+    ingredients<%= f.text_area :ingredients %>
+    directions<%= f.text_area :directions %>
+    image<%= f.file_field :image %>
+    <%= f.hidden_field :user_id, :value => current_user.id%>
+    <%= f.submit "Create Recipe" %>
+<% end %>

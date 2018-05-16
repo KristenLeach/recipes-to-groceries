@@ -1,0 +1,27 @@
+<h3>Sign Up To Start Building Your Grocery list!</h3>
+
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2> Sign Up Failed </h2>
+    <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for @user do |f| %>
+    <label>Name: <%= f.text_field :name %></label>
+    <label>Email Address: <%= f.text_field :email %></label>
+    <label>Password: <%= f.text_field :password %></label>
+    <label>Image: <%= f.file_field :image %></label>
+    <% if f.object.image? %>
+      <%= image_tag f.object.image.thumb.url %>
+      <%= f.label :remove_image %>
+      <%= f.check_box :remove_image %> 
+    <% end %>
+    <%= f.submit "Sign me up!" %>
+<% end %>
+
+<%= link_to('Or, sign up with Facebook!', '/auth/facebook') %>

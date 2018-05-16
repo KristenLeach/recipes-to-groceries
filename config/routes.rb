@@ -1,3 +1,7 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  # Do I need a nested resource to prevent other users from editing recipes? Probably
+  root "welcome#index"
+  resources :users, only: [:new, :create, :show]
+  resources :sessions
+  resources :recipes 
 end
