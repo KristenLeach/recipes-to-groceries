@@ -1,8 +1,17 @@
 <h3> Check out these great recipes! </h3>
 
 <% Recipe.all.each do |recipe| %>
+
     <%= image_tag recipe.image.thumb.url %>
     <strong><%= recipe.name %></strong>
     <p><%= recipe.description %></p>
+
+    <%= form_for [current_user, @meal] do |f| %>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+        <%= f.hidden_field :recipe_id, :value => recipe.id %>
+        <%= f.submit "Add to Meal Plan" %>
+    <% end %>
+
     <small>uploaded by: <%= recipe.user.name %></small>
+
 <% end %>

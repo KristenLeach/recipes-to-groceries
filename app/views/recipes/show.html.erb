@@ -15,4 +15,5 @@
 
 <% if current_user.recipes.include?(@recipe) %>
     <%= link_to "Edit Recipe", edit_user_recipe_path(current_user, @recipe)%>
-    <%= link_to "Delete Recipe", destroy_user_recipe_path(current_user, @recipe)%>
+    <%= link_to "Delete Recipe", user_recipe_path(current_user, @recipe), :confirm => "Are you sure?", :method => :delete %>
+<% end %>

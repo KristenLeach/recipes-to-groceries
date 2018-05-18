@@ -1,0 +1,19 @@
+
+<h2>Your Meals</h2>
+<% @recipes.each do |recipe| %>
+<% #byebug %>
+    <%= image_tag recipe.image.thumb.url %>
+    <strong><%= recipe.name %></strong>
+    <p><%= recipe.description %></p>
+    <% #byebug %>
+    <%= link_to "Delete", user_meal_path(current_user, recipe.meals), :confirm => "Are you sure?", :method => :delete %>
+<% end %>
+
+<h3>Grocery List</h3>
+<% @ingredients.each do |ingredient| %>
+    <ul>
+        <li><%= ingredient %></li>
+    </ul>
+<% end %>
+
+

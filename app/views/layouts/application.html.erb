@@ -10,10 +10,12 @@
   </head>
 
   <body>
+  <% if logged_in? %>
     <%= link_to "Home", root_path %>
     <%= link_to "Create Recipe", new_user_recipe_path(current_user, @recipe = Recipe.new) %>
     <%= link_to "Profile", new_user_recipe_path(current_user, @recipe = Recipe.new) %>
-    <%= link_to "Mealplan" %>
+    <%= link_to "Mealplan", user_meals_path(current_user) %>
+    <% end %>
     <%= yield %>
   </body>
 </html>

@@ -1,7 +1,6 @@
 class RecipesController < ApplicationController
 
     def new 
-        #byebug
         if params[:user_id] && !User.exists?(params[:user_id])
             redirect_to root_path, alert: "User not found"
         #elsif params[:user_id] != current_user.id
@@ -11,20 +10,26 @@ class RecipesController < ApplicationController
         end
     end
 
+    def show
+        @recipe = Recipe.find(params[:id])
+    end
+
     def create 
-        raise params.inspect
-        @recipe = Recipe.create(recipe_params)
+        @recipe = Recipe.new(recipe_params)
+        @recipe.ingredients = recipe_params[:ingredients].split(', ')
         if @recipe.save
-          redirect_to recipe_show_path(@recipe)
+          redirect_to recipe_path(@recipe)
         else 
           render :new
         end
     end
 
     def edit
+        @recipe = Recipe.find(params[:id])
     end
 
     def update 
+        @recipe = Recipe.find(params[:id])
         @recipe.update(recipe_params)
             if recipe.save
                 redirect_to user_path(current_user)
@@ -34,6 +39,7 @@ class RecipesController < ApplicationController
     end
 
     def destroy
+        @recipe = Recipe.find(params[:id])
         @recipe.destroy
         redirect_to user_path(current_user)
     end
@@ -41,7 +47,7 @@ class RecipesController < ApplicationController
     private 
 
     def recipe_params
-        params.require(:recipe).permit(:name, :description, :ingredients[], :directions, :image, :user_id)
+        params.require(:recipe).permit(:name, :description, :ingredients, :directions, :image, :user_id)
     end
 
     def set_recipe

@@ -1,2 +1,0 @@
-class MealPlan < ApplicationRecord
-end

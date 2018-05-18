@@ -22,3 +22,4 @@ end
 require 'carrierwave'
 require 'carrierwave/orm/activerecord'
 require "mini_magick"
+require 'json'
