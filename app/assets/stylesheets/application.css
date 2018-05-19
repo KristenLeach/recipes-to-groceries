@@ -69,14 +69,17 @@ small.footer {
     padding: 15px 50px;
 }
 
-.menu a:link, a:visited, a:hover, a:active {
-    text-decoration: none;
+.menu {
     font: normal small-caps normal 1em Arial, Helvetica, sans-serif;
+}
+
+a:link, a:visited, a:hover, a:active {
+    text-decoration: none;
     padding: 0px 20px 0px 0px;
     color: black;
 }
 
-.menu a:hover, a:active {
+a:hover, a:active {
     text-shadow: 5px 5px 30px black;
     color: white;
 }

@@ -40,3 +40,26 @@ a {
     grid-row: 2 / 3;
     vertical-align: center;
 }
+
+/*--- profile/show page ---*/
+
+.profile-container {
+    display: grid;
+    grid-gap: 8px;
+    grid-template-columns: 200px auto;
+    grid-auto-rows: 350px;
+    padding: 5px 50px 20px;
+}
+
+.user-info {
+    grid-column: 1 / 2;
+}
+
+.user-info img {
+    width: 200px;
+}
+
+.profile-container h3 {
+    padding: 0px;
+}
+

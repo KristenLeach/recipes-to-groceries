@@ -18,8 +18,11 @@
         <%= f.submit "Add to Meal Plan" %>
     <% end %>
       <% if current_user.recipes.include?(@recipe) %>
+      <div class='show'>      
         <%= link_to "Edit Recipe", edit_user_recipe_path(current_user, @recipe)%>
+        <br>
         <%= link_to "Delete Recipe", user_recipe_path(current_user, @recipe), :confirm => "Are you sure?", :method => :delete %>
+        </div>
       <% end %>
   </div>
 </div>

@@ -8,11 +8,12 @@
     </ul>
   </div>
 <% end %>
-
+<div class='signin-form-container'>
   <%= form_for @user, url: login_path(@user), method: :post do |f|%>
     <%= f.email_field :email, placeholder: "Email" %>
     <%= f.password_field :password, placeholder: "Password" %>
     <%= f.submit "Sign In" %>
   <% end %>
 
-  <%= link_to('Or, log in with Facebook!', '/auth/facebook') %>
+  <%= link_to 'Or, log in with Facebook!', '/auth/facebook', class:'fb-link' %>
+</div>

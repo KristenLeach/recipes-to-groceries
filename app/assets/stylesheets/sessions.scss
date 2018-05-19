@@ -1,7 +1,7 @@
 // Place all the styles related to the Sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.form-container {
+.signin-form-container {
     display: grid;
     grid-gap: 8px;
     grid-template-columns: 1fr 250px 250px 1fr;
@@ -36,4 +36,8 @@ textarea {
 
 .submit {
     grid-column: 1 / -1;
+}
+
+.fb-link {
+    font: normal small-caps normal 1.2em Arial, Helvetica, sans-serif;
 }

@@ -1,1 +1,19 @@
-<h3><%= @user.name %></h3>
+<div class='profile-container'>
+
+    <div class='user-info'>
+        <h3>Recipes by <%= @user.name %></h3>
+        <%= image_tag @user.image.profile.url %>
+    </div>
+
+        <div class='recipe-container'>
+        <% @user.recipes.each do |recipe| %>
+            <div class='recipe-card'>
+            <%= image_tag recipe.image.profile.url, class:'recipe-img' %>
+            <%= link_to recipe.name, recipe_path(recipe), class:'name' %>
+            <p class='description'><%= recipe.description %></p>
+            <small><%= link_to "Edit Recipe", edit_user_recipe_path(current_user, recipe)%>
+            <small><%= link_to "Delete Recipe", user_recipe_path(current_user, recipe), :confirm => "Are you sure?", :method => :delete %>
+            </div>
+<% end %>
+
+</div>
