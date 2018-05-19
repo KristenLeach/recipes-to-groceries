@@ -11,11 +11,16 @@
   </div>
 <% end %>
 
+<div class='form-container'>
 <%= form_for @user do |f| %>
-    <label>Name: <%= f.text_field :name %></label>
-    <label>Email Address: <%= f.email_field :email %></label>
-    <label>Password: <%= f.password_field :password %></label>
-    <label>Image: <%= f.file_field :image %></label>
+    <%= f.label "Name"%>
+    <%= f.text_field :name %>
+    <%= f.label "Email "%>
+    <%= f.email_field :email %>
+    <%= f.label "Password" %>
+    <%= f.password_field :password %>
+    <%= f.label "Image" %>
+    <%= f.file_field :image %>
     <% if f.object.image? %>
       <%= image_tag f.object.image.thumb.url %>
       <%= f.label :remove_image %>
@@ -23,5 +28,5 @@
     <% end %>
     <%= f.submit "Sign me up!" %>
 <% end %>
-
-<%= link_to('Or, sign up with Facebook!', '/auth/facebook') %>
+<%= link_to('Or, sign up with Facebook!', '/auth/facebook')  %>
+</div>

@@ -8,7 +8,7 @@
     <%= image_tag recipe.image.profile.url, class:'recipe-img' %>
     <p class='name'><%= recipe.name %></p>
     <p class='description'><%= recipe.description %></p>
-
+    <%= link_to "View Recipe", recipe_path(recipe), class:'button'%>
     <div class='button'>
     <%= form_for [current_user, @meal] do |f| %>
         <%= f.hidden_field :user_id, :value => current_user.id %>
