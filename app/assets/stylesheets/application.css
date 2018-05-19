@@ -13,3 +13,82 @@
  *= require_tree .
  *= require_self
  */
+
+ /*---- main container styling ----*/
+
+ .container {
+     background-color: white;
+     height: 100%;
+     display: grid;
+     grid-gap: 3px;
+     grid-template-columns: repeat(12, 1fr);
+     grid-template-rows: 300px 50px auto 50px;
+     
+ }
+
+ .header {
+    grid-column: 1 / -1;
+    grid-row: 1 / 2;
+    padding: 5px 50px;
+ }
+
+ .menu {
+    grid-column: 1 / -1;
+    grid-row: 2 / 3;
+    padding: 5px 50px;
+    background-color: lightgrey;
+    padding-top: 15px;
+ }
+
+ .content {
+    grid-column: 1 / -1;
+    grid-row: 3 / 4;
+ }
+
+ .footer {
+    grid-column: 1 / -1;
+    grid-row: 4 / 5;
+ }
+
+/*---- item styles ---*/
+
+h1.header {
+    font: normal small-caps normal 3em/150% Arial, Helvetica, sans-serif; 
+    position: absolute;
+    text-shadow: 0px 0px 30px white, 5px 5px 50px white;
+}
+
+h1.img {
+    z-index: -1;
+    position: relative;
+    align-content: center;
+}
+
+small.footer {
+    border: 1px solid rgb(61, 61, 61);
+    padding: 15px 50px;
+}
+
+.menu a:link, a:visited, a:hover, a:active {
+    text-decoration: none;
+    font: normal small-caps normal 1em Arial, Helvetica, sans-serif;
+    padding: 0px 20px 0px 0px;
+    color: black;
+}
+
+.menu a:hover, a:active {
+    text-shadow: 5px 5px 30px black;
+    color: white;
+}
+
+small a:link, a:visited, a:hover, a:active {
+    text-decoration: none;
+    font: normal small-caps normal 1em Arial, Helvetica, sans-serif;
+    color: black;
+}
+
+small a:hover {
+    text-shadow: 5px 5px 30px black;
+    color: white;
+    padding: 0px;
+}

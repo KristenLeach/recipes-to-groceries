@@ -1,3 +1,37 @@
 // Place all the styles related to the recipes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.form-container {
+    display: grid;
+    grid-gap: 8px;
+    grid-template-columns: 1fr 250px 250px 1fr;
+    padding: 5px 50px 20px;
+}
+
+form.new_recipe {
+    grid-column: 2 / 4;
+    font: normal small-caps normal 1.5em Arial, Helvetica, sans-serif;
+    background-color: lightgrey;
+    box-shadow: 10px 10px 10px grey;
+    border-radius: 4px;
+}
+
+form.new_recipe {
+    display: grid;
+    grid-gap: 8px;
+    grid-template-columns: 150px auto;
+    padding: 20px 30px;
+}
+
+label {
+    grid-column: 1 / 2;
+    justify-items: right;
+}
+
+textarea {
+    grid-column: 2 / 3;
+}
+
+.submit {
+    grid-column: 1 / -1;
+}

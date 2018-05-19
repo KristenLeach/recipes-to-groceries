@@ -13,8 +13,8 @@
 
 <%= form_for @user do |f| %>
     <label>Name: <%= f.text_field :name %></label>
-    <label>Email Address: <%= f.text_field :email %></label>
-    <label>Password: <%= f.text_field :password %></label>
+    <label>Email Address: <%= f.email_field :email %></label>
+    <label>Password: <%= f.password_field :password %></label>
     <label>Image: <%= f.file_field :image %></label>
     <% if f.object.image? %>
       <%= image_tag f.object.image.thumb.url %>

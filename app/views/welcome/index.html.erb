@@ -1,17 +1,25 @@
+
 <h3> Check out these great recipes! </h3>
 
+ <div class='recipe-container'>
+
 <% Recipe.all.each do |recipe| %>
+    <div class='recipe-card'>
+    <%= image_tag recipe.image.profile.url, class:'recipe-img' %>
+    <p class='name'><%= recipe.name %></p>
+    <p class='description'><%= recipe.description %></p>
 
-    <%= image_tag recipe.image.thumb.url %>
-    <strong><%= recipe.name %></strong>
-    <p><%= recipe.description %></p>
-
+    <div class='button'>
     <%= form_for [current_user, @meal] do |f| %>
         <%= f.hidden_field :user_id, :value => current_user.id %>
         <%= f.hidden_field :recipe_id, :value => recipe.id %>
         <%= f.submit "Add to Meal Plan" %>
     <% end %>
+    </div>
 
-    <small>uploaded by: <%= recipe.user.name %></small>
-
+    <%= image_tag recipe.user.image.thumb.url, class:'user-img'%>
+    <small class='user-link'><%=link_to recipe.user.name, user_path(recipe.user) %></small>
+    </div>
 <% end %>
+
+</div>

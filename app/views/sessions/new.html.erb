@@ -1,13 +1,18 @@
-<% if session[:user_id] %>
-  <h1><%= @user.name %></h1>
-  <h2>Email: <%= @user.email %></h2>
-  <h2>Facebook UID: <%= @user.uid %></h2>
-  <img src="<%= @user.image %>">
-<% else %>
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2> Sign In Failed </h2>
+    <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
   <%= form_for @user, url: login_path(@user), method: :post do |f|%>
-    <%= f.collection_select :name, User.all, :name, :name, {:prompt => "Select Name"}%>
+    <%= f.email_field :email, placeholder: "Email" %>
     <%= f.password_field :password, placeholder: "Password" %>
     <%= f.submit "Sign In" %>
-<% end %>
+  <% end %>
+
   <%= link_to('Or, log in with Facebook!', '/auth/facebook') %>
-<% end %>

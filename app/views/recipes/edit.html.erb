@@ -1,4 +1,4 @@
-<h3>Edit Your Recipe</h3>
+<h3>Edit Your Recipe:</h3>
 
 <% if @recipe.errors.any? %>
   <div id="error_explanation">
@@ -11,4 +11,4 @@
   </div>
 <% end %>
 
-<%= render partial: 'form', locals: {recipe: @recipe} %>
+<%= render partial: 'form', locals: {recipe: @recipe, current_user: current_user} %>

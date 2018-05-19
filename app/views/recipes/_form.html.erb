@@ -1,9 +1,16 @@
-<%= form_for recipe do |f| %>
-    name<%= f.text_field :name %>
-    description<%= f.text_area :description %>
-    ingredients<%= f.text_area :ingredients %>
-    directions<%= f.text_area :directions %>
-    image<%= f.file_field :image %>
+<div class='form-container'>
+<%= form_for [current_user, recipe] do |f| %>
+    <%= f.label "Name" %>
+    <%= f.text_area :name %>
+    <%= f.label "Description" %>
+    <%= f.text_area :description %>
+    <%= f.label "Ingredients" %>
+    <%= f.text_area :ingredients %>
+    <%= f.label "Directions" %>
+    <%= f.text_area :directions %>
+    <%= f.label "Image" %>
+    <%= f.file_field :image %>
     <%= f.hidden_field :user_id, :value => current_user.id%>
-    <%= f.submit "Create Recipe" %>
+    <%= f.submit "Create Recipe", class:"submit" %>
 <% end %>
+</div>

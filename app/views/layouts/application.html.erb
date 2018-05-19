@@ -4,18 +4,29 @@
     <title>RecipesToGroceries</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
+  <div class="container">
+      <h1 class='header'>Recipes to Groceries</h1> 
+      <img src="<%= asset_path('header1.png')%>" class='header'>
   <body>
-  <% if logged_in? %>
-    <%= link_to "Home", root_path %>
-    <%= link_to "Create Recipe", new_user_recipe_path(current_user, @recipe = Recipe.new) %>
-    <%= link_to "Profile", new_user_recipe_path(current_user, @recipe = Recipe.new) %>
-    <%= link_to "Mealplan", user_meals_path(current_user) %>
-    <% end %>
-    <%= yield %>
+    <div class="menu">
+      <% if logged_in? %>
+        <%= link_to "Home", root_path %>
+        <%= link_to "Create Recipe", new_user_recipe_path(current_user, @recipe = Recipe.new) %>
+        <%= link_to "Profile", user_path(current_user) %>
+        <%= link_to "Mealplan", user_meals_path(current_user) %>
+        <%= link_to "Log Out", logout_path %>
+      <% else %>
+        <% link_to "Sign Up", new_user_path %>
+        <% link_to "Log In", login_path %>
+      <% end %>
+    </div>
+    <div class="content">
+      <%= yield %>
+    </div>
   </body>
+      <small class='footer'> &copy; Copyright 2018, Kristen Leach for Flatiron School </small>
+  </div>
 </html>
