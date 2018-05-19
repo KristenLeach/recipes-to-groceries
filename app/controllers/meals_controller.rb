@@ -3,6 +3,8 @@ class MealsController < ApplicationController
     before_action :match_user
 
     def index
+        #byebug
+        @meals = current_user.meals
         @ingredients = list_ingredients
         @recipes = list_recipes
     end

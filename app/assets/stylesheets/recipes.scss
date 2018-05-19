@@ -1,6 +1,9 @@
 // Place all the styles related to the recipes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/*--- new/edit recipe page ---*/
+
 .form-container {
     display: grid;
     grid-gap: 8px;
@@ -8,7 +11,7 @@
     padding: 5px 50px 20px;
 }
 
-form.new_recipe {
+form.new_recipe, form.edit_recipe {
     grid-column: 2 / 4;
     font: normal small-caps normal 1.5em Arial, Helvetica, sans-serif;
     background-color: lightgrey;
@@ -16,7 +19,7 @@ form.new_recipe {
     border-radius: 4px;
 }
 
-form.new_recipe {
+form.new_recipe, form.edit_recipe {
     display: grid;
     grid-gap: 8px;
     grid-template-columns: 150px auto;
@@ -34,4 +37,33 @@ textarea {
 
 .submit {
     grid-column: 1 / -1;
+}
+
+/*--- recipes show page ---*/
+
+.show-recipe {
+    display: grid;
+    grid-gap: 8px;
+    grid-template-columns: 400px;
+    padding: 5px 50px 20px;
+    
+}
+
+.recipe-info {
+    background-color: lightgrey;
+    box-shadow: 10px 10px 10px grey;
+    border-radius: 4px;
+    padding: 10px;
+}
+
+p.show-description {
+    font: normal small-caps bold 1.2em Arial, Helvetica, sans-serif; 
+    margin-top: 0px;
+}
+p.show-directions, li.show {
+    font: normal small-caps normal 1em Arial, Helvetica, sans-serif; 
+}
+
+label.show {
+    font: normal small-caps normal 1.2em Arial, Helvetica, sans-serif;
 }

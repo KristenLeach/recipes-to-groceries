@@ -11,7 +11,9 @@ class RecipesController < ApplicationController
     end
 
     def show
+        #byebug
         @recipe = Recipe.find(params[:id])
+        @meal = Meal.new
     end
 
     def create 

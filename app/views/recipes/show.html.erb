@@ -1,19 +1,25 @@
 <h3><%= @recipe.name %></h3>
 
-<%= image_tag @recipe.image.profile.url %>
-<br>
-<p><%= @recipe.description %></p>
-<br>
-<label>Ingredients:</label>
+<div class='show-recipe'>
+  <div class='recipe-info'>
+  <%= image_tag @recipe.image.profile.url %>
+  <p class='show-description'><%= @recipe.description %></p>
+  <label class='show'>Ingredients:</label>
     <ul>
       <% @recipe.ingredients.each do |ingredient| %>
-        <li><%= ingredient %></li>
+        <li class='show'><%= ingredient %></li>
       <% end %>
     </ul>
-
-<p><%= @recipe.directions %></p>
-
-<% if current_user.recipes.include?(@recipe) %>
-    <%= link_to "Edit Recipe", edit_user_recipe_path(current_user, @recipe)%>
-    <%= link_to "Delete Recipe", user_recipe_path(current_user, @recipe), :confirm => "Are you sure?", :method => :delete %>
-<% end %>
+    <label class='show'>Directions:</label>
+  <p class='show-directions'><%= @recipe.directions %></p>
+      <%= form_for [current_user, @meal] do |f| %>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+        <%= f.hidden_field :recipe_id, :value => @recipe.id %>
+        <%= f.submit "Add to Meal Plan" %>
+    <% end %>
+      <% if current_user.recipes.include?(@recipe) %>
+        <%= link_to "Edit Recipe", edit_user_recipe_path(current_user, @recipe)%>
+        <%= link_to "Delete Recipe", user_recipe_path(current_user, @recipe), :confirm => "Are you sure?", :method => :delete %>
+      <% end %>
+  </div>
+</div>

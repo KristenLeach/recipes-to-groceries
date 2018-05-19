@@ -80,15 +80,3 @@ small.footer {
     text-shadow: 5px 5px 30px black;
     color: white;
 }
-
-small a:link, a:visited, a:hover, a:active {
-    text-decoration: none;
-    font: normal small-caps normal 1em Arial, Helvetica, sans-serif;
-    color: black;
-}
-
-small a:hover {
-    text-shadow: 5px 5px 30px black;
-    color: white;
-    padding: 0px;
-}

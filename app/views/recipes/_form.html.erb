@@ -10,6 +10,11 @@
     <%= f.text_area :directions %>
     <%= f.label "Image" %>
     <%= f.file_field :image %>
+    <% if f.object.image? %>
+      <%= image_tag f.object.image.tiny.url %>
+      <%= f.label :remove_image %>
+      <%= f.check_box :remove_image %> 
+      <% end %>
     <%= f.hidden_field :user_id, :value => current_user.id%>
     <%= f.submit "Create Recipe", class:"submit" %>
 <% end %>

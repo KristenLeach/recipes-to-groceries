@@ -65,8 +65,16 @@ img.user-img {
     width: 45px;
 }
 
-p.name {
-    font: normal small-caps bold 1.3em Arial, Helvetica, sans-serif; 
+a.name:link, a.name:visited, a.name:hover, a.name:active {
+    font: normal small-caps bold 1.2em Arial, Helvetica, sans-serif; 
+    text-decoration: none;
+    color: black;
+}
+
+a.name:hover {
+    text-shadow: 5px 5px 30px black;
+    color: white;
+    padding: 0px;
 }
 
 p.description {
@@ -79,3 +87,14 @@ h3 {
     margin: 0px;
 }
 
+small a:link, a:visited, a:hover, a:active {
+    text-decoration: none;
+    font: normal small-caps normal 1em Arial, Helvetica, sans-serif;
+    color: black;
+}
+
+small a:hover {
+    text-shadow: 5px 5px 30px black;
+    color: white;
+    padding: 0px;
+}
