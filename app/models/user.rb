@@ -2,7 +2,7 @@ class User < ApplicationRecord
     has_secure_password
     has_many :recipes
     has_many :meals
-    has_many :recipes, through: :meals 
+    has_many :meal_list, through: :meals, source: :recipe
     mount_uploader :image, ImageUploader
     validate :image_size_validation
  

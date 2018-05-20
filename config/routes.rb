@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root "welcome#index"
 
   resources :users, only: [:new, :create, :show] do 
-    resources :recipes, only: [:new, :create, :edit, :destroy]
+    resources :recipes, only: [:new, :create, :edit, :update, :destroy]
     resources :meals, only: [:index, :new, :create, :destroy]
   end
 
@@ -16,4 +16,5 @@ Rails.application.routes.draw do
     #post '/signup' => 'users#create'
 
     get "auth/facebook/callback" =>  'sessions#create'
+
 end
