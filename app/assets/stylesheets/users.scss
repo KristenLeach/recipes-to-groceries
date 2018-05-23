@@ -51,6 +51,17 @@ a {
     padding: 5px 50px 20px;
 }
 
+.recipe-card-profile {
+    background-color: lightgrey;
+    display: grid;
+    grid-template: 150px 20px 85px 20px 55px 10px / 1fr;
+    justify-items: center;
+    align-items: center;
+    padding: 5px;
+    box-shadow: 10px 10px 10px grey;
+    border-radius: 4px;
+}
+
 .user-info {
     grid-column: 1 / 2;
 }

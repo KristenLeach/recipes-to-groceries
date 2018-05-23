@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
     helper_method :current_user 
     helper_method :logged_in?
-    helper_method :match_user
+    helper_method :validate_user_info
   
     def current_user
       @current_user ||= User.find(session[:user_id]) if session[:user_id]
@@ -19,13 +19,17 @@ class ApplicationController < ActionController::Base
 
     def user_exist
         if params[:user_id] && !User.exists?(params[:user_id])
-            redirect_to root_path, alert: "User not found"
+            render ':welcome/index', message: "User not found"
         end
     end
     
     def match_user
         if params[:user_id] != current_user.id.to_s
-            redirect_to root_path, alert: "User ID authentication failure. You cannot edit other user's information."
+            render ':welcome/index', message: "User ID authentication failure. You cannot edit other user's information."
         end
     end
+
+    def validate_user_info 
+        user_exist && match_user 
+    end 
 end

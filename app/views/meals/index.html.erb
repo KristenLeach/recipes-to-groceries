@@ -1,18 +1,27 @@
+<% if @meals.empty? %>
+  <h3>You have not added any recipes to your meal plan!</h3>
+<% else %>
+  <h3>Your Meals</h3>
 
-<h2>Your Meals</h2>
+  <div class='recipe-container'>
 
-<% @recipes.each do |recipe| %>
-    <%= image_tag recipe.image.thumb.url %>
-    <strong><%= recipe.name %></strong>
-    <p><%= recipe.description %></p>
-    <%= link_to "Delete", user_meal_path(current_user, recipe.meals), :confirm => "Are you sure?", :method => :delete %>
-<% end %>
+  <% @meals.each do |recipe| %>
+    <div class="recipe-card">
+      <%= image_tag recipe.image.thumb.url, class: 'recipe-img'%>
+      <%= link_to recipe.name, recipe_path(recipe), class:'name' %>
+      <p class='description'><%= recipe.description %></p>
+      <small><%= link_to "Delete", user_meal_path(current_user, recipe.meals.ids), :confirm => "Are you sure?", :method => :delete %></small>
+    </div>
+  <% end %>
 
-<h3>Grocery List</h3>
-<% @ingredients.each do |ingredient| %>
-    <ul>
-        <li><%= ingredient %></li>
-    </ul>
+  </div>
+
+  <h3>Grocery List</h3>
+  <% @ingredients.each do |ingredient| %>
+      <ul>
+          <li><%= ingredient %></li>
+      </ul>
+  <% end %>
 <% end %>
 
 

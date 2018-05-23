@@ -9,13 +9,8 @@
     <%= link_to recipe.name, recipe_path(recipe), class:'name' %>
     <p class='description'><%= recipe.description %></p>
     <div class='button'>
-    <%= form_for [current_user, @meal] do |f| %>
-        <%= f.hidden_field :user_id, :value => current_user.id %>
-        <%= f.hidden_field :recipe_id, :value => recipe.id %>
-        <%= f.submit "Add to Meal Plan" %>
-    <% end %>
+    <%= render partial: 'meals/form', locals: {recipe: recipe, current_user: current_user} %>
     </div>
-
     <%= image_tag recipe.user.image.thumb.url, class:'user-img'%>
     <small class='user-link'><%=link_to recipe.user.name, user_path(recipe.user) %></small>
     </div>

@@ -1,9 +1,13 @@
 class User < ApplicationRecord
-    has_secure_password
     has_many :recipes
     has_many :meals
     has_many :meal_list, through: :meals, source: :recipe
     mount_uploader :image, ImageUploader
+    
+    has_secure_password
+    validates_presence_of :name, :email
+    validates :password, length: { minimum: 8 }, allow_nil: true
+    validates :email, :uniqueness => {:case_sensitive => false}
     validate :image_size_validation
  
     private

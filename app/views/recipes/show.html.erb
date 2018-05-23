@@ -12,11 +12,7 @@
     </ul>
     <label class='show'>Directions:</label>
   <p class='show-directions'><%= @recipe.directions %></p>
-      <%= form_for [current_user, @meal] do |f| %>
-        <%= f.hidden_field :user_id, :value => current_user.id %>
-        <%= f.hidden_field :recipe_id, :value => @recipe.id %>
-        <%= f.submit "Add to Meal Plan" %>
-    <% end %>
+      <%= render partial: 'meals/form', locals: {recipe: @recipe, current_user: current_user} %>
       <% if current_user.recipes.include?(@recipe) %>
       <div class='show'>      
         <%= link_to "Edit Recipe", edit_user_recipe_path(current_user, @recipe)%>

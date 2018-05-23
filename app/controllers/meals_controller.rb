@@ -1,20 +1,15 @@
 class MealsController < ApplicationController
-    before_action :user_exist
-    before_action :match_user
+    before_action :validate_user_info 
+    skip_before_action :validate_user_info, only: [:index]
 
     def index
-        #byebug
-        @meals = current_user.meals
+        @meals = current_user.meal_list
         @ingredients = list_ingredients
-        @recipes = list_recipes
     end
 
     def create
       @meal = Meal.create(meal_params)
-      if current_user.meals.include?(@meal.recipe_id)
-        byebug
-        redirect to root_path, alert: "That recipe is already in your Meal Plan!"
-      elsif @meal.save
+      if @meal.save
         redirect_to user_meals_path
       else
         render root_path 
@@ -22,8 +17,7 @@ class MealsController < ApplicationController
     end
 
     def destroy
-        byebug
-        @meal = Meal.find(params[:meal][:id])
+        @meal = Meal.find(params[:id])
         @meal.destroy
         redirect_to user_meals_path
     end
@@ -43,11 +37,4 @@ class MealsController < ApplicationController
       @ingredients.uniq
     end
 
-    def list_recipes
-        @recipes = []
-        meals = Meal.where(:user_id => current_user.id)
-          meals.each {|meal| @recipes << meal.recipe}
-          @recipes.uniq
-    end
-    
 end

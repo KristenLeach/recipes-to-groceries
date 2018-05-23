@@ -1,10 +1,5 @@
-class Recipe < ApplicationRecord
-    belongs_to :user
-    has_many :meals
-    has_many :users, through: :meals
-
+class Session < ActiveRecord::Base
     mount_uploader :image, ImageUploader
-    validates_presence_of :name, :description, :ingredients, :directions, :image
     validate :image_size_validation
  
     private
@@ -12,4 +7,5 @@ class Recipe < ApplicationRecord
         errors[:image] << "should be less than 500KB" if image.size > 0.5.megabytes
     end
 
-end
+  end
+  

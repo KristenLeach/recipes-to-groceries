@@ -5,18 +5,10 @@ class SessionsController < ApplicationController
     end
 
     def create
-        if auth
-            @user = User.find_or_create_by(uid: auth['uid']) do |u|
-            u.name = auth['info']['name']
-            u.email = auth['info']['email']
-            u.image = auth['info']['image']
-            end
-            session[:user_id] = @user.id
-            redirect_to root_path
-        elsif @user = User.find_by(email: params[:user][:email])
+       if @user = User.find_by(email: params[:user][:email])
             if @user && @user.authenticate(params[:user][:password])
                 session[:user_id] = @user.id
-                redirect_to root_path, notice: "Welcome back to the theme park!"
+                redirect_to root_path
             else
                 render :new
             end
@@ -24,6 +16,23 @@ class SessionsController < ApplicationController
             @user = User.new
             render :new 
         end
+    end
+
+    def facebook
+        #byebug
+        if auth
+            @user = User.find_or_create_by(uid: auth['uid']) do |u|
+            u.name = auth['info']['name']
+            u.email = auth['info']['email']
+            u.secure_image_url = (auth['info']['image']).gsub('http://','https://')
+            u.password = params[:code][0..71]
+            end
+            session[:user_id] = @user.id
+            redirect_to root_path
+        else 
+            @user = User.new
+            render :new
+        end 
     end
 
     def destroy

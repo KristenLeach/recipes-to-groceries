@@ -1,0 +1,5 @@
+<%= form_for [current_user, Meal.new] do |f| %>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+        <%= f.hidden_field :recipe_id, :value => recipe.id %>
+        <%= f.submit "Add to Meal Plan" %>
+    <% end %>
