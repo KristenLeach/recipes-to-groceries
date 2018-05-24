@@ -11,8 +11,10 @@
             <%= image_tag recipe.image.profile.url, class:'recipe-img' %>
             <%= link_to recipe.name, recipe_path(recipe), class:'name' %>
             <p class='description'><%= recipe.description %></p>
+             <% if current_user.recipes.include?(recipe) %>
             <small><%= link_to "Edit Recipe", edit_user_recipe_path(current_user, recipe)%>
             <small><%= link_to "Delete Recipe", user_recipe_path(current_user, recipe), :confirm => "Are you sure?", :method => :delete %>
+            <% end %>
             <%= render partial: 'meals/form', locals: {recipe: recipe, current_user: current_user} %>
             </div>
         <% end %>
