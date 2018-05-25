@@ -1,0 +1,19 @@
+<h3><%= @meal.recipe.name %></h3>
+
+<div class='show-recipe'>
+  <div class='recipe-info'>
+  <%= image_tag @meal.recipe.image.profile.url %>
+  <p class='show-description'><%= @meal.recipe.description %></p>
+  <label class='show'>Ingredients:</label>
+    <ul>
+    <% @meal.recipe.ingredients.each do |ingredient| %>
+        <li><%= ingredient %></li>
+    <% end %>
+    </ul>
+    <%= form_for [current_user, @meal] do |f| %>
+    <label>Add a Note:</label><%= f.text_field :note %>
+    <%= f.submit "Add Recipe" %>
+    <% end %>
+
+  </div>
+</div>

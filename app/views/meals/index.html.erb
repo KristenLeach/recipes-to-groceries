@@ -10,6 +10,7 @@
       <%= image_tag recipe.image.thumb.url, class: 'recipe-img'%>
       <%= link_to recipe.name, recipe_path(recipe), class:'name' %>
       <p class='description'><%= recipe.description %></p>
+      <p class='note'>&#x2605; <%= recipe.meals.last.note %></p>
       <small><%= link_to "Delete", user_meal_path(current_user, recipe.meals.ids), :confirm => "Are you sure?", :method => :delete %></small>
     </div>
   <% end %>

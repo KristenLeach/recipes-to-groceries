@@ -10,11 +10,25 @@ class MealsController < ApplicationController
     def create
       @meal = Meal.create(meal_params)
       if @meal.save
-        redirect_to user_meals_path
+        redirect_to edit_user_meal_path(current_user, @meal)
       else
         render root_path 
       end
     end
+
+    def edit
+      @meal = Meal.find(params[:id])
+    end
+
+    def update
+      @meal = Meal.find(params[:id])
+        @meal.update(note: params[:meal][:note])
+      if @meal.save
+        redirect_to user_meals_path
+      else
+        render :edit
+      end
+    end 
 
     def destroy
         @meal = Meal.find(params[:id])
@@ -25,7 +39,7 @@ class MealsController < ApplicationController
     private
 
     def meal_params
-        params.require(:meal).permit(:user_id, :recipe_id)
+        params.require(:meal).permit(:user_id, :recipe_id, :note)
     end
 
     def list_ingredients
@@ -34,7 +48,7 @@ class MealsController < ApplicationController
         meals.each do |meal| 
             meal.recipe.ingredients.map {|ingredient| @ingredients << ingredient}
         end
-      @ingredients.uniq
+      @ingredients.uniq.reject { |i| i.to_s.empty? }
     end
-
+    
 end
