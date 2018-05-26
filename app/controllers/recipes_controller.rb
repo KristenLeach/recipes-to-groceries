@@ -4,13 +4,7 @@ class RecipesController < ApplicationController
     skip_before_action :validate_user_info, only: [:show]
 
     def new 
-        #if params[:user_id] && !User.exists?(params[:user_id])
-           # render ':welcome/index', message: "User not found"
-        #elsif params[:user_id] != current_user.id.to_s
-           # render ':welcome/index', message: "User info does not match."
-       # else
             @recipe = Recipe.new
-        #end
     end
 
     def show
