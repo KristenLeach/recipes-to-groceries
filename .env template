@@ -1,0 +1,8 @@
+# When forking/cloning this file,
+    1. create a .env file in the root of your program,
+    2. add the text below to your .env file
+    3. enter your own FB Secret and Key to enable OmniAuth login.
+
+
+FACEBOOK_KEY=
+FACEBOOK_SECRET=

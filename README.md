@@ -6,6 +6,10 @@ Welcome to Recipes to Groceries! This app allows users to add recipes to a datab
 
 ```Fork and clone this repo```
 
+### Enabling OmniAuth for FB login 
+
+```Follow instructions in .env template```
+
 ### Prerequisites
 To install all necessary gems, run 
 
