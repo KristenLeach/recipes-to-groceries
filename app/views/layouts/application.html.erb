@@ -6,6 +6,7 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
   </head>
   <div class="container">
       <h1 class='header'>Recipes to Groceries</h1> 
@@ -14,6 +15,7 @@
     <div class="menu">
       <% if logged_in? %>
         <%= link_to "Home", root_path %>
+        <%= link_to "Top Recipes", toprecipes_path %>
         <%= link_to "Create Recipe", new_user_recipe_path(current_user, @recipe = Recipe.new) %>
         <%= link_to "Profile", user_path(current_user) %>
         <%= link_to "Meal Plan", user_meals_path(current_user) %>

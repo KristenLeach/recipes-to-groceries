@@ -1,0 +1,19 @@
+ <div class='recipe-container'>
+
+<% recipes.order("created_at asc").each do |recipe| %>
+    <div class='recipe-card'>
+    <%= image_tag recipe.image.profile.url, class:'recipe-img' %>
+    <%= link_to recipe.name, recipe_path(recipe), class:'name' %>
+    <p class='description'><%= recipe.description %></p>
+    <div class="liked">
+    <%= render partial: 'recipes/liked', locals: {recipe: recipe, current_user: current_user, controller: 'recipes', action: 'update_liked'} %>
+    </div>
+    <div class='button'>
+    <%= render partial: 'meals/form', locals: {recipe: recipe, current_user: current_user} %>
+    </div>
+    <%= image_tag recipe.user.image.thumb.url, class:'user-img'%>
+    <small class='user-link'><%=link_to recipe.user.name, user_path(recipe.user) %></small>
+    </div>
+<% end %>
+
+</div>

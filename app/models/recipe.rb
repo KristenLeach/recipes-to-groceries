@@ -7,6 +7,10 @@ class Recipe < ApplicationRecord
     validates_presence_of :name, :description, :ingredients, :directions, :image
     validate :image_size_validation
  
+    def self.best_of
+        Recipe.where(:liked => true)
+    end
+
     private
     def image_size_validation
         errors[:image] << "should be less than 500KB" if image.size > 0.5.megabytes

@@ -83,3 +83,12 @@ a:hover, a:active {
     text-shadow: 5px 5px 30px black;
     color: white;
 }
+
+button.liked {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+}

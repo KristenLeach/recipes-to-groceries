@@ -16,5 +16,6 @@ Rails.application.routes.draw do
     #post '/signup' => 'users#create'
 
     get "auth/facebook/callback" =>  'sessions#facebook'
+    get "/toprecipes" => "welcome#top_recipes"
 
 end
