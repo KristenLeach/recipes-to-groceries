@@ -4,7 +4,7 @@ class RecipesController < ApplicationController
     skip_before_action :validate_user_info, only: [:show]
 
     def new 
-            @recipe = Recipe.new
+        @recipe = Recipe.new
     end
 
     def show
@@ -32,6 +32,11 @@ class RecipesController < ApplicationController
             else
                 render :edit
             end
+    end
+
+    def popular_recipes
+        byebug
+        @recipes = Recipe.popular_recipes
     end
 
     #def update_liked

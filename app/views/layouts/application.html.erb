@@ -16,6 +16,7 @@
       <% if logged_in? %>
         <%= link_to "Home", root_path %>
         <%= link_to "Top Recipes", toprecipes_path %>
+        <%= link_to "Popular Recipes", popular_recipes_path %>
         <%= link_to "Create Recipe", new_user_recipe_path(current_user, @recipe = Recipe.new) %>
         <%= link_to "Profile", user_path(current_user) %>
         <%= link_to "Meal Plan", user_meals_path(current_user) %>

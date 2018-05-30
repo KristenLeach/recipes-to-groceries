@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   resources :recipes, only: [:show]
 
+
     get '/login' => 'sessions#new'
     post '/login' => 'sessions#create'
     get '/logout' => 'sessions#destroy'
@@ -17,5 +18,6 @@ Rails.application.routes.draw do
 
     get "auth/facebook/callback" =>  'sessions#facebook'
     get "/toprecipes" => "welcome#top_recipes"
+    get "/popular_recipes" => "recipes#popular_recipes"
 
 end
