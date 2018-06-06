@@ -27,7 +27,6 @@ class RecipesController < ApplicationController
     def update 
         @recipe.update(recipe_params)
             if @recipe.save
-                #redirect_to user_path(current_user)
                 redirect_to root_path
             else
                 render :edit
@@ -35,19 +34,8 @@ class RecipesController < ApplicationController
     end
 
     def popular_recipes
-        byebug
         @recipes = Recipe.popular_recipes
     end
-
-    #def update_liked
-    #    raise params.inspect
-    #    @recipe.update(liked: params[:liked])
-    #        if @recipe.save
-    #            redirect_back(fallback_location: root_path)
-    #        else
-    #            render ':welcome/index'
-    #        end
-    #end
 
     def destroy
         @recipe.destroy

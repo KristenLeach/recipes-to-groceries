@@ -12,9 +12,10 @@ class Recipe < ApplicationRecord
     end
 
     def self.popular_recipes
-        Recipe.find_each do |recipe|
+       @recipes = Recipe.find_each do |recipe|
             recipe.users.count > 1
         end
+        @recipes
     end
 
     private
