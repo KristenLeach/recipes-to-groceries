@@ -1,11 +1,9 @@
 <div class= 'liked_form'>
-<% if recipe.liked? %>
-  <%= form_for [current_user, recipe], html: {class: "liked"} do |f| %>
+<%= form_for [current_user, recipe], html: {class: "liked"} do |f| %>
+  <% if recipe.liked? %>
     <%= f.hidden_field :liked, value: false %>
     <%= f.button '<i class="fas fa-heart"></i>'.html_safe, class:'liked'%>
-  <% end %>
-<% else %>
-  <%= form_for [current_user, recipe], html: {class: "liked"} do |f| %>
+  <% else %>
     <%= f.hidden_field :liked, value: true %>
     <%= f.button '<i class="far fa-heart"></i>'.html_safe, class:'liked' %>
   <% end %>
