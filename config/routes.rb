@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
  
+  resources :hearts
   root "welcome#index"
 
   resources :users, only: [:new, :create, :show] do 
@@ -19,5 +20,8 @@ Rails.application.routes.draw do
     get "auth/facebook/callback" =>  'sessions#facebook'
     get "/toprecipes" => "welcome#top_recipes"
     get "/popular_recipes" => "recipes#popular_recipes"
+    match 'heart', to: 'hearts#heart', via: :post
+    match 'unheart', to: 'hearts#unheart', via: :delete
+
 
 end

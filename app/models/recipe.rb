@@ -2,6 +2,8 @@ class Recipe < ApplicationRecord
     belongs_to :user
     has_many :meals
     has_many :users, through: :meals
+    has_many :hearts, dependent: :destroy
+    has_many :users_who_hearted, through: :hearts, source: :user
 
     mount_uploader :image, ImageUploader
     validates_presence_of :name, :description, :ingredients, :directions, :image
