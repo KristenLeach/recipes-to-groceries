@@ -16,6 +16,7 @@ gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 
+gem 'sprockets', '~> 3.7.2'
 #Styling like buttons
 gem 'font-awesome-sass'
 # Use CoffeeScript for .coffee assets and views
