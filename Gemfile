@@ -40,6 +40,9 @@ gem 'jbuilder', '~> 2.5'
 gem 'carrierwave', '~> 0.10.0'
 gem 'mini_magick', '~> 4.8'
 
+#use div_for
+gem 'record_tag_helper', '~> 1.0'
+
 # Use Simple_form to add an array to params 
 # gem "simple_form"
 # Use Capistrano for deployment

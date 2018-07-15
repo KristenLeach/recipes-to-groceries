@@ -178,6 +178,8 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
+    record_tag_helper (1.0.0)
+      actionview (~> 5.x)
     ruby_dep (1.5.0)
     rubyzip (1.2.1)
     sass (3.5.6)
@@ -257,6 +259,7 @@ DEPENDENCIES
   pg
   puma (~> 3.11)
   rails (~> 5.2.0)
+  record_tag_helper (~> 1.0)
   sass-rails (~> 5.0)
   selenium-webdriver
   spring
