@@ -12,11 +12,7 @@ def unheart
   @heart = @user.hearts.find_by_recipe_id(params[:recipe_id])
   @recipe = Recipe.find(params[:recipe_id])
   @heart.destroy!
-  # respond_to do |format|
-  #   format.html { render partial: ':hearts/button', locals: { recipe: @recipe }, layout: false }
-  #   format.json { render :json }
-  #   format.js
-#  end
+  render json: @heart
 end
 
 end

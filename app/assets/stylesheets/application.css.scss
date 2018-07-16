@@ -84,11 +84,11 @@ a:hover, a:active {
     color: white;
 }
 
-button.liked {
-    background-color: Transparent;
-    background-repeat:no-repeat;
+button.like, button.unlike {
+    background-color: transparent;
+    background-repeat: no-repeat;
     border: none;
-    cursor:pointer;
+    cursor: pointer;
     overflow: hidden;
-    outline:none;
+    outline: none;
 }
