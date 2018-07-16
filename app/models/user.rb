@@ -4,7 +4,7 @@ class User < ApplicationRecord
     has_many :meal_list, through: :meals, source: :recipe
     mount_uploader :image, ImageUploader
     has_many :hearts, dependent: :destroy
-    has_many :hearted_recipes, through: :hearts, source: :recipe 
+    #has_many :hearted_recipes, through: :hearts, source: :recipe 
     
     has_secure_password
     validates_presence_of :name, :email
@@ -23,7 +23,7 @@ class User < ApplicationRecord
         heart.destroy!
     end
       
-      # returns true of false if a recipe is hearted by user
+      # returns true or false if a recipe is hearted by user
     def heart?(recipe)
         self.hearts.find_by_recipe_id(recipe.id)
     end

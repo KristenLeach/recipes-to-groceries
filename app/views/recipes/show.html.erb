@@ -12,6 +12,7 @@
     </ul>
     <label class='show'>Directions:</label>
   <p class='show-directions'><%= @recipe.directions %></p>
+      <div class='liked'><%= render partial: 'hearts/button', locals: { recipe: @recipe } %></div>
       <%= render partial: 'meals/form', locals: {recipe: @recipe, current_user: current_user} %>
       <% if current_user.recipes.include?(@recipe) %>
       <div class='show'>      

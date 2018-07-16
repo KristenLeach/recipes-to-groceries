@@ -1,3 +1,5 @@
+recipe liked form 
+
 <div class= 'liked_form'>
 <%= form_for [current_user, recipe], html: {class: "liked"} do |f| %>
   <% if recipe.liked? %>

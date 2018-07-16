@@ -5,9 +5,7 @@
     <%= image_tag recipe.image.profile.url, class:'recipe-img' %>
     <%= link_to recipe.name, recipe_path(recipe), class:'name' %>
     <p class='description'><%= recipe.description %></p>
-    <%= div_for recipe do %>
-     <%= render partial: 'hearts/button', locals: { recipe: recipe } %>
-    <% end %>
+    <div class='liked'><%= render partial: 'hearts/button', locals: { recipe: recipe } %></div>
     <div class='button'>
     <%= render partial: 'meals/form', locals: {recipe: recipe, current_user: current_user} %>
     </div>
