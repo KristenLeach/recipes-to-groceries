@@ -1,5 +1,9 @@
 <% if current_user.heart?(recipe) %>
-  <%= button_to '<i class="fas fa-heart"></i>'.html_safe, unheart_path(recipe_id: recipe.id), class: 'liked', method: :delete %>
+<%= button_to unheart_path(recipe_id: recipe.id), class: 'liked', method: :delete do %>
+    <i class="fas fa-heart"></i>
+<% end %>
 <% else %>
-  <%= button_to '<i class="far fa-heart"></i>'.html_safe, heart_path(recipe_id: recipe.id), class: 'liked', method: :post %>
+  <%= button_to heart_path(recipe_id: recipe.id), class: 'liked', method: :post do %>
+    <i class="far fa-heart"></i>
+  <% end %>
 <% end %>
