@@ -4,6 +4,6 @@
 <% end %>
 <% else %>
   <%= button_to heart_path(recipe_id: recipe.id), class: 'liked', method: :post do %>
-    <i class="far fa-heart"></i>
+    <i class="far fa-heart" id="recipe_<%= recipe.id %>"></i>
   <% end %>
 <% end %>
