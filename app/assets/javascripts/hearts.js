@@ -1,5 +1,5 @@
 $(function(){
-    $('.like').on('click', function(e){
+    $('.liked').on('click', function(e){
         e.preventDefault();
        
         $.ajax({ 
