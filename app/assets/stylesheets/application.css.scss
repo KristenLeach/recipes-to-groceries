@@ -22,7 +22,7 @@
      display: grid;
      grid-gap: 3px;
      grid-template-columns: repeat(12, 1fr);
-     grid-template-rows: 300px 50px auto 50px;
+     grid-template-rows: 300px 75px auto 50px;
      
  }
 
@@ -69,8 +69,42 @@ small.footer {
     padding: 15px 50px;
 }
 
-.menu {
+.menu, .menu ul {
     font: normal small-caps normal 1em Arial, Helvetica, sans-serif;
+    list-style: none;
+}
+
+.menu {
+    float: left;
+}
+
+.menu > li {
+    float: left;
+}
+
+.menu ul {
+    position: absolute;
+    display: none;
+    z-index: 999;
+}
+
+.menu ul li a {
+    width: 80px;
+}
+
+.menu li:hover ul {
+    display: block;
+}
+
+.dropdown{
+    padding: 20px;
+    background:lightgray;
+    display:none;
+}
+
+.dropdown a{
+    display:block;
+    margin-bottom:30px;
 }
 
 a:link, a:visited, a:hover, a:active {
