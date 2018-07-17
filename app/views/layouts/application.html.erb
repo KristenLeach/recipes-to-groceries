@@ -14,13 +14,16 @@
   <body>
     <div class="menu">
       <% if logged_in? %>
-        <%= link_to "Home", root_path %>
-        <%= link_to "Top Recipes", toprecipes_path %>
-        <%= link_to "Popular Recipes", popular_recipes_path %>
-        <%= link_to "Create Recipe", new_user_recipe_path(current_user, @recipe = Recipe.new) %>
+      <%= link_to "Create Recipe", new_user_recipe_path(current_user, @recipe = Recipe.new) %>
         <%= link_to "Profile", user_path(current_user) %>
         <%= link_to "Meal Plan", user_meals_path(current_user) %>
         <%= link_to "Log Out", logout_path %>
+      <div class="link">Recipes</div>
+        <div class="dropdown">
+          <%= link_to "Home", root_path %>
+          <%= link_to "Top Recipes", toprecipes_path %>
+          <%= link_to "Popular Recipes", popular_recipes_path %>
+        </div>
       <% else %>
         <%= link_to "Sign Up", new_user_path %>
         <%= link_to "Log In", login_path %>

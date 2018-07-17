@@ -1,28 +1,30 @@
 $(function() {
-    $('.like').on('click', function(e) {
+    $('.liked').on('click', function(e) {
       e.preventDefault()
+      e.stopPropagation() //this is ok to leave out
+      const form = this.form
+      const type = form.action.includes('unheart') ? 'DELETE' : 'POST'
       $.ajax({
-        type: this.form.method,
-        url: this.form.action,
+        type,
+        url: form.action,
         data: $(this).serialize(),
         success: function(response) {
-          $(`#recipe_${response.recipe_id}`).removeClass('far')
-          $(`#recipe_${response.recipe_id}`).addClass('fas')
+          if (response.action == 'hearted') {
+            $(`#recipe_${response.heart.recipe_id}`).removeClass('far')
+            $(`#recipe_${response.heart.recipe_id}`).addClass('fas')
+            $(`#recipe_${response.heart.recipe_id}`)
+              .parent()
+              .parent()
+              .attr('action', `/unheart?recipe_id=${response.heart.recipe_id}`)
+          } else {
+            $(`#recipe_${response.heart.recipe_id}`).removeClass('fas')
+            $(`#recipe_${response.heart.recipe_id}`).addClass('far')
+            $(`#recipe_${response.heart.recipe_id}`)
+              .parent()
+              .parent()
+              .attr('action', `/heart?recipe_id=${response.heart.recipe_id}`)
+          }
         },
       })
     })
- 
-
-    $('.unlike').on('click', function(e){
-      e.preventDefault()
-      $.ajax({
-        type: $("input[name='_method']").val(),
-        url: this.form.action, 
-        data: $(this).serialize(),
-        success: function(response) {
-            $(`#recipe_${response.recipe_id}`).removeClass('fas')
-            $(`#recipe_${response.recipe_id}`).addClass('far')
-            }
-        })
-    })
-})
+  })
