@@ -51,6 +51,7 @@ gem 'record_tag_helper', '~> 1.0'
 gem 'thin'
 gem 'json'
 gem 'jquery-rails'
+gem 'active_model_serializers'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false

@@ -33,10 +33,6 @@ class RecipesController < ApplicationController
             end
     end
 
-    def popular_recipes
-        @recipes = Recipe.popular_recipes
-    end
-
     def destroy
         @recipe.destroy
         redirect_to user_path(current_user)

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
  
+  resources :comments
   root "welcome#index"
 
   resources :users, only: [:new, :create, :show] do 
@@ -17,8 +18,8 @@ Rails.application.routes.draw do
     #post '/signup' => 'users#create'
 
     get "auth/facebook/callback" =>  'sessions#facebook'
-    get "/toprecipes" => "welcome#top_recipes"
-    get "/popular_recipes" => "recipes#popular_recipes"
+    get "/popular_recipes" => "welcome#popular_recipes"
+    get "/favorites" => "welcome#favorite_recipes"
     post '/heart' => 'hearts#heart'
     delete '/unheart' => 'hearts#unheart'
 

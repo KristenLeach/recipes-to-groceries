@@ -14,10 +14,10 @@
   <body>
     <ul class="menu">
       <% if logged_in? %>
-      <li class="link"><%= link_to "Home", root_path %>
+      <li class="link"><%= link_to "Recipes", root_path, :id => "index" %>
         <ul class="dropdown">
-          <li><%= link_to "Top Recipes", toprecipes_path %></li>
-          <li><%= link_to "Popular Recipes", popular_recipes_path %></li>
+          <li><%= link_to "Popular Recipes", popular_recipes_path, :id => "popularRecipes" %></li>
+          <li><%= link_to "Recipes you Love", favorites_path, :id => "favorites" %></li>
           </ul>
         </li>
         <li><%= link_to "Create Recipe", new_user_recipe_path(current_user, @recipe = Recipe.new) %></li>
