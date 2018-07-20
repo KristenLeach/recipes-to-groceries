@@ -3,18 +3,21 @@ class WelcomeController < ApplicationController
 
     def index
         @recipes = Recipe.all 
-        respond_to :html, {json: @recipes, layout: false} 
+        respond_to do |f|
+            f.html 
+            f.json {render json: @recipes, layout: false}
+        end
     end
 
     def popular_recipes
         @recipes = Recipe.best_of
         render :popular_recipes
-        respond_to :html, {json: @recipes, layout: false} 
+        render json: @recipes 
     end
 
     def favorite_recipes
         @recipes = current_user.hearted_recipes
-        respond_to :html, {json: @recipes} 
+        render json: @recipes 
     end
 
 end

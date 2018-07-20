@@ -1,13 +1,14 @@
 
 $(function(){
-    console.log('hey')
-    $("#favorites").click(function(){
-        console.log('fuck')
-        debugger
-        $.getJSON(this.href, function(data){
+    $(".indexPages").click(function(e){
+        e.preventDefault()
+        $.getJSON(this.href).success(function(data){
             debugger
-            $("content").html(recipes)
-        })
+            $('.content').html(data)
+        }).fail(function( jqxhr, textStatus, error ) {
+    var err = textStatus + ", " + error;
+    console.log( "Request Failed: " + err );
+        });
     })
 })
 
