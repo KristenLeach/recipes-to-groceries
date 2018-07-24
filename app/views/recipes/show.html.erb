@@ -1,8 +1,10 @@
-<h3><%= @recipe.name %></h3>
+
 
 <div class='show-recipe'>
   <div class='recipe-info'>
   <%= image_tag @recipe.image.profile.url %>
+  <div class="details">
+  <h3><%= @recipe.name %></h3>
   <p class='show-description'><%= @recipe.description %></p>
   <label class='show'>Ingredients:</label>
     <ul>
@@ -20,6 +22,11 @@
         <br>
         <%= link_to "Delete Recipe", user_recipe_path(current_user, @recipe), :confirm => "Are you sure?", :method => :delete %>
         </div>
+        </div>
       <% end %>
+  </div>
+  <div class="comments">
+    <%= render partial: "comments/form", locals: {recipe: @recipe, current_user: current_user} %>
+    <div class="commentList"></div>
   </div>
 </div>

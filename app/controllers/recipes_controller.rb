@@ -9,6 +9,7 @@ class RecipesController < ApplicationController
 
     def show
         @meal = Meal.new
+        @comment = Comment.new
     end
 
     def create 

@@ -11,13 +11,18 @@ class WelcomeController < ApplicationController
 
     def popular_recipes
         @recipes = Recipe.best_of
-        render :popular_recipes
-        render json: @recipes 
+        respond_to do |f|
+            f.html 
+            f.json {render json: @recipes, layout: false}
+        end 
     end
 
     def favorite_recipes
         @recipes = current_user.hearted_recipes
-        render json: @recipes 
+        respond_to do |f|
+            f.html 
+            f.json {render json: @recipes, layout: false}
+        end
     end
 
 end

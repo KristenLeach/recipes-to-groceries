@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
- 
-  resources :comments
+
   root "welcome#index"
 
   resources :users, only: [:new, :create, :show] do 
@@ -8,8 +7,9 @@ Rails.application.routes.draw do
     resources :meals, only: [:index, :new, :create, :destroy, :update, :edit]
   end
 
-  resources :recipes, only: [:show]
-
+  resources :recipes, only: [:show] do 
+    resources :comments
+  end
 
     get '/login' => 'sessions#new'
     post '/login' => 'sessions#create'
