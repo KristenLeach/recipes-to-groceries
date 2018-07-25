@@ -3,5 +3,5 @@
     <%= f.text_area :content %>
     <%= f.hidden_field :recipe_id, :value => recipe.id %>
     <%= f.hidden_field :user_id, :value => current_user.id %>
-    <%= f.submit "Post", class: "postComment"%>
+    <%= f.submit "Post" %>
 <% end %>

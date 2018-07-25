@@ -26,7 +26,7 @@
       <% end %>
   </div>
   <div class="comments">
-    <%= render partial: "comments/form", locals: {recipe: @recipe, current_user: current_user} %>
+    <%= render partial: "comments/form", locals: {recipe: @recipe, comment: @comment} %>
     <div class="commentList"></div>
   </div>
 </div>

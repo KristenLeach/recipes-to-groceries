@@ -33,12 +33,12 @@ $(function(){
         this.userImage = json.user.image.image.thumb.url
         this.userName = json.user.name
         this.userId = json.user.id
-        this.heart = json.hearts[0]
+        this.heart = Array.isArray(json.hearts) && json.hearts[0]
     }
 
     Recipe.prototype.renderCard = function() {
         let AUTH_TOKEN = $('meta[name=csrf-token]').attr('content');
-            console.log(AUTH_TOKEN)
+        
         const hearted = `<form class="button_to" method="delete" action="/unheart?recipe_id=${this.id}">
                 <input type="hidden" name="authenticity_token" value="${AUTH_TOKEN}">
                 <button class="liked" type="submit">

@@ -4,13 +4,25 @@ class CommentsController < ApplicationController
     end 
 
     def index 
-        @comment = Comment.find(params[:id])
+        @comments = Comment.all
+        respond_to do |f|
+            f.html
+            f.json { render json: @comments, layout: false }
+        end
     end
+
+    def show 
+        @comment = Comment.find(params[:id])
+        respond_to do |f|
+            f.html
+            f.json { render json: @comment, layout: false }
+        end
+    end
+
 
     def create 
         @comment = Comment.create(comment_params)
-        @recipe = Recipe.find(params[:recipe_id])
-        redirect_to recipe_comment_path(@recipe, @comment)
+        render :json => @comment, layout: false
     end 
 
     private 
