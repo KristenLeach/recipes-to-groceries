@@ -27,6 +27,8 @@
   </div>
   <div class="comments">
     <%= render partial: "comments/form", locals: {recipe: @recipe, comment: @comment} %>
+    <br>
+    <%= link_to "Show Comments", recipe_comments_path(@recipe), :id => "showComments" %>
     <div class="commentList"></div>
   </div>
 </div>

@@ -4,7 +4,8 @@ class CommentsController < ApplicationController
     end 
 
     def index 
-        @comments = Comment.all
+        @recipe = Recipe.find(params[:recipe_id])
+        @comments = @recipe.comments
         respond_to do |f|
             f.html
             f.json { render json: @comments, layout: false }

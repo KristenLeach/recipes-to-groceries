@@ -4,7 +4,10 @@ class HeartsController < ApplicationController
     @user = current_user
     @recipe = Recipe.find(params[:recipe_id])
     @heart = @user.heart!(@recipe)
-    render json: {heart: @heart, action: 'hearted'}
+    respond_to do |f|
+      f.html
+      f.json (render :json => {heart: @heart, action: 'hearted'})
+    end
   end
 
 def unheart
@@ -12,7 +15,10 @@ def unheart
   @heart = @user.hearts.find_by_recipe_id(params[:recipe_id])
   @recipe = Recipe.find(params[:recipe_id])
   @heart.destroy!
-  render json: { heart: @heart }
+  respond_to do |f|
+    f.html
+    f.json (render :json => {heart: @heart, action: 'hearted'})
+  end
 end
 
 end

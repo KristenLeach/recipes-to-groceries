@@ -1,6 +1,6 @@
-$(function(){
-    $(".indexPages").click(function(e){
+    function indexListeners(e){
         e.preventDefault()
+        console.log('loading new page')
         const defaultTitle = "<h3> Check out these great recipes! </h3>"
         let title;
         switch(this.text) {
@@ -23,8 +23,8 @@ $(function(){
             $('.content').html(`${title}<div class="recipe-container">${recipes.join('')}</div>`)
             attachListeners()
         })
-    })
-    
+    }
+
     function Recipe(json) {
         this.name = json.name
         this.description = json.description
@@ -72,4 +72,3 @@ $(function(){
         </div>`
   }
 
-})
