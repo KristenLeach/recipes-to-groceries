@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 users = User.create([
-    {name: "Kristen Leach", email:"kristen@email.com", password: "password", image: Rails.root.join("app/assets/images/kristen.jpg").open},
+    {name: "Eleven", email:"leggomyeggo@email.com", password: "password", image: Rails.root.join("app/assets/images/eleven.jpg").open},
     {name: "Jessica Jones", email:"jones@email.com", password: "password", image: Rails.root.join("app/assets/images/jessica.jpg").open},
     {name: "Walter White", email:"walt@email.com", password: "password", image: Rails.root.join("app/assets/images/walter.jpg").open},
     {name: "Ben Solo", email:"kyloren@email.com", password: "password", image: Rails.root.join("app/assets/images/kylo.jpg").open},
@@ -19,7 +19,7 @@ users = User.create([
     ])
 
 recipes = Recipe.create([
-    {name: "No Bake Chocolate Cookies", description: "Chewy, chocolatey, peanut buttery oatmeal cookies that require no bake time!", ingredients: ["quick oats", "cocoa powder", "peanut butter", "sugar"], directions: "Mix all ingredients over low heat, drop by the TBS onto wax paper and let cool.", user_id: 1, image: Rails.root.join("app/assets/images/chocolatecookies.jpg").open},
+    {name: "Eggos", description: "Only the greatest food on planet earth.", ingredients: ["eggo waffles", "toaster", "syrup"], directions: "Put the waffles in the toaster and heat them until toasted. Add syrup to your liking. Or, scrap all of that and just eat them frozen from the box.", user_id: 1, image: Rails.root.join("app/assets/images/eggo.png").open},
     {name: "Whiskey on the Rocks", description: "A drink that helps you forget the past and stop caring about the future.", ingredients: ["cheap whiskey", "ice"], directions: "Put them in a glass and drink it already.", user_id: 2, image: Rails.root.join("app/assets/images/whiskey.jpg").open},
     {name: "Blue Sky Rock Candy", description: "It's not what it looks like; it's just sugar for christ's sake, Skylar.", ingredients: ["sugar", "corn syrup", "blue food coloring", "peppermint extract"], directions: "Mix all but the peppermint extract in a beaker and heat to precisely 273 degrees fahrenheit. Allow the mixture to cool to 100 degrees and add the peppermint extract. Pour over wax paper and allow the mixture to cool. Shatter the candy into tiny pieces and sell at a 500% markup.", user_id: 3, image: Rails.root.join("app/assets/images/bluesky.jpg").open},
     {name: "Bantha Milk Smoothie", description: "Just a treat an old friend used to make for me after long days of training. Before you ask, no one knows why it's blue.", ingredients: ["Bantha milk", "Beebleberry ice cream"], directions: "Place the ingredients in a glass, reach out with the force to blend.", user_id: 4, image: Rails.root.join("app/assets/images/bantha.jpg").open},

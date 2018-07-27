@@ -94,3 +94,18 @@ label.show {
     font: normal small-caps normal 1em Arial, Helvetica, sans-serif;
 }
 
+.scrollButtons a.previous, .scrollButtons a.next {
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 16px;
+}
+
+.scrollButtons a.previous:hover, .scrollButtons a.next:hover {
+    background-color: rgb(255, 255, 255);
+    color: black;
+}
+
+.previous, .next {
+    background-color: lightgray;
+    color: black;
+}

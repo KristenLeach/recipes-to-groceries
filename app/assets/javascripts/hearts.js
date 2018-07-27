@@ -24,5 +24,9 @@ function heartListeners(e) {
             .attr('action', `/heart?recipe_id=${response.heart.recipe_id}`)
         }
       },
+      fail: function( jqxhr, textStatus, error ) {
+        var err = textStatus + ", " + error;
+        console.log( "Request Failed: " + err );
+      }
     }) 
 }

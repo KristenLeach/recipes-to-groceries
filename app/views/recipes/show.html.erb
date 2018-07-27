@@ -24,7 +24,17 @@
         </div>
         </div>
       <% end %>
+      <br>
+      <div class="scrollButtons">
+      <% if @recipe.id-1 != 0 %>
+        <a href="/recipes/<%=@recipe.id-1%>" class="previous">&#8249; Previous</a> 
+      <% end %>
+      <% if @recipe.id+1 <= Recipe.all.count %>
+        <a href="/recipes/<%=@recipe.id+1%>" class="next">Next &#8250;</a>
+      <% end %>
+      </div>
   </div>
+  <br>
   <div class="comments">
     <%= render partial: "comments/form", locals: {recipe: @recipe, comment: @comment} %>
     <br>

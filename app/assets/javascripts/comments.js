@@ -10,7 +10,7 @@ $(function(){
         }
 
         addCommentToList(){
-            return `<li><p>${this.content}</p><br><small><b>${this.userName}</b> @ ${this.posted}</small></li>`
+            return `<li><p>${this.content}</p><small><b>${this.userName}</b> @ ${this.posted}</small></li>`
         }
 
     }
@@ -21,6 +21,7 @@ $(function(){
                 const commentObj = new Comment(commentJSON)
                 return commentObj.addCommentToList()
             })
+            $("#comment_content").val('')
             $('.commentList').html(`<ul>${comments.reverse().join('')}</ul>`)
         })
     }
