@@ -22,9 +22,9 @@
       <br>
         <%= link_to "Delete Recipe", user_recipe_path(current_user, @recipe), :confirm => "Are you sure?", :method => :delete %>
       </div>
+      <% end %>
     </div>
-    <% end %>
-    <br>
+    
     <div class="scrollButtons">
       <% if @recipe.id-1 != 0 %>
         <a href="/recipes/<%=@recipe.id-1%>" class="scroll">&#8249; Previous</a> 

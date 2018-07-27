@@ -21,4 +21,5 @@
 function attachListeners(){
     $('.liked').click(heartListeners)
     $('.indexPages').click(indexListeners)
+    $(".scroll").click(recipeScroll)
 }
