@@ -3,36 +3,36 @@
 <div class='show-recipe'>
   <div class='recipe-info'>
   <%= image_tag @recipe.image.profile.url %>
-  <div class="details">
-  <h3><%= @recipe.name %></h3>
-  <p class='show-description'><%= @recipe.description %></p>
-  <label class='show'>Ingredients:</label>
-    <ul>
-      <% @recipe.ingredients.each do |ingredient| %>
-        <li class='show'><%= ingredient %></li>
-      <% end %>
-    </ul>
+    <div class="details">
+    <h3><%= @recipe.name %></h3>
+    <p class='show-description'><%= @recipe.description %></p>
+    <label class='show'>Ingredients:</label>
+      <ul>
+        <% @recipe.ingredients.each do |ingredient| %>
+         <li class='show'><%= ingredient %></li>
+        <% end %>
+      </ul>
     <label class='show'>Directions:</label>
-  <p class='show-directions'><%= @recipe.directions %></p>
-      <div class='liked'><%= render partial: 'hearts/button', locals: { recipe: @recipe } %></div>
-      <%= render partial: 'meals/form', locals: {recipe: @recipe, current_user: current_user} %>
-      <% if current_user.recipes.include?(@recipe) %>
+      <p class='show-directions'><%= @recipe.directions %></p>
+    <div class='liked'><%= render partial: 'hearts/button', locals: { recipe: @recipe } %></div>
+    <%= render partial: 'meals/form', locals: {recipe: @recipe, current_user: current_user} %>
+    <% if current_user.recipes.include?(@recipe) %>
       <div class='show'>      
         <%= link_to "Edit Recipe", edit_user_recipe_path(current_user, @recipe)%>
-        <br>
-        <%= link_to "Delete Recipe", user_recipe_path(current_user, @recipe), :confirm => "Are you sure?", :method => :delete %>
-        </div>
-        </div>
-      <% end %>
       <br>
-      <div class="scrollButtons">
+        <%= link_to "Delete Recipe", user_recipe_path(current_user, @recipe), :confirm => "Are you sure?", :method => :delete %>
+      </div>
+    </div>
+    <% end %>
+    <br>
+    <div class="scrollButtons">
       <% if @recipe.id-1 != 0 %>
-        <a href="/recipes/<%=@recipe.id-1%>" class="previous">&#8249; Previous</a> 
+        <a href="/recipes/<%=@recipe.id-1%>" class="scroll">&#8249; Previous</a> 
       <% end %>
       <% if @recipe.id+1 <= Recipe.all.count %>
-        <a href="/recipes/<%=@recipe.id+1%>" class="next">Next &#8250;</a>
+        <a href="/recipes/<%=@recipe.id+1%>" class="scroll">Next &#8250;</a>
       <% end %>
-      </div>
+    </div>
   </div>
   <br>
   <div class="comments">
@@ -41,4 +41,3 @@
     <%= link_to "Show Comments", recipe_comments_path(@recipe), :id => "showComments" %>
     <div class="commentList"></div>
   </div>
-</div>

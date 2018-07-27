@@ -1,3 +1,3 @@
 class RecipeUserSerializer < ActiveModel::Serializer
-  attributes :name, :image
+  attributes :name, :image, :id
 end

@@ -9,6 +9,10 @@ class RecipesController < ApplicationController
 
     def show
         @meal = Meal.new
+        respond_to do |f|
+            f.html
+            f.json {render json: @recipe}
+        end
     end
 
     def create 
