@@ -6,18 +6,12 @@ class CommentsController < ApplicationController
     def index 
         @recipe = Recipe.find(params[:recipe_id])
         @comments = @recipe.comments
-        respond_to do |f|
-            f.html
-            f.json { render json: @comments, layout: false }
-        end
+        render json: @comments, layout: false
     end
 
     def show 
         @comment = Comment.find(params[:id])
-        respond_to do |f|
-            f.html
-            f.json { render json: @comment, layout: false }
-        end
+        render json: @comment, layout: false
     end
 
 

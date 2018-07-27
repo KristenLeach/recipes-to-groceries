@@ -1,5 +1,3 @@
-$(function(){
-
     class Comment{
         constructor(data){
             this.userName = data.user.name
@@ -26,24 +24,22 @@ $(function(){
         })
     }
 
-    $("#new_comment").submit(function(e){
+    function newComment(e){
         e.preventDefault()
         const path = this.action
         $.post(path, $(this).serialize(), function(data){
 
             showAllComments(path)
           })
-    })
+    }
 
-    $("#showComments").click(function(e){
+    function showComments(e){
         e.preventDefault()
         debugger
         showAllComments(this.href)
-    })
+    }
 
     function postedTime(createdAt){
         date = new Date(createdAt)
         return date.toLocaleString()
     }
-
-    })

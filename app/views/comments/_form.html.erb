@@ -1,4 +1,4 @@
-<p>Add a Comment</p>
+<p>Add a Comment:</p>
 <%= form_for [recipe, Comment.new] do |f| %>
     <%= f.text_area :content %>
     <%= f.hidden_field :recipe_id, :value => recipe.id %>

@@ -69,7 +69,7 @@ small.footer {
     padding: 15px 50px;
 }
 
-.menu, .menu ul {
+.menu, .menu ul, #showComments, .comments {
     font: normal small-caps normal 1em Arial, Helvetica, sans-serif;
     list-style: none;
 }
@@ -113,7 +113,7 @@ a:link, a:visited, a:hover, a:active {
     color: black;
 }
 
-a:hover, a:active {
+a:hover, a:active, #showComments:hover {
     text-shadow: 5px 5px 30px black;
     color: white;
 }

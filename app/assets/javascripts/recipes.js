@@ -9,9 +9,8 @@ $(function(){
             this.description = data.description
             this.ingredients = data.ingredients
             this.directions = data.directions
-            this.heart = data.hearts[0]
+            this.heart = Array.isArray(json.hearts) && json.hearts[0]
             this.userId = data.user.id
-            this.comments = data.comments
         }
 
         buildCard(){
@@ -63,7 +62,7 @@ $(function(){
                 </div>
                 <br>
                 <div class="comments">
-                <p>Add Comment</p>
+                <p>Add a Comment:</p>
                     <form class="new_comment" id="new_comment" action="/recipes/${this.id}/comments" accept-charset="UTF-8" method="post">
                     <input name="utf8" type="hidden" value="✓">
                     <input type="hidden" name="authenticity_token" value="${AUTH_TOKEN}">
@@ -72,25 +71,24 @@ $(function(){
                         <input value="${this.userId}" type="hidden" name="comment[user_id]" id="comment_user_id">
                         <input type="submit" name="commit" value="Post" data-disable-with="Post">
                     </form>
-                    <a href="/recipe/${this.id}/comments" id="showComments">Show Comments</a>
+                    <a href="/recipes/${this.id}/comments" id="showComments">Show Comments</a>
                 <div class="commentList">
                 </div>
             `
         }
 
         ingredientList(){
-            const ingredients = this.ingredients.map( ingredient => {
+            const ingredients = this.ingredients.map(ingredient => {
                 return `<li class="show">${ingredient}</li>`
             })
             return ingredients
         }
-
     }
 
 function recipeScroll(e){
     e.preventDefault()
     console.log("this is ajax")
-    $.getJSON(this.href).success(function(data){
+    $.getJSON(this.href).success(data => {
         const recipe = new RecipeShow(data)
         $(".content").html(recipe.buildCard())
         attachListeners()
