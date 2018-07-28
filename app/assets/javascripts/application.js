@@ -25,3 +25,7 @@ function attachListeners(){
     $("#new_comment").submit(newComment)
     $("#showComments").click(showComments)
 }
+
+function currentUser(){
+  return document.body.dataset.id
+}

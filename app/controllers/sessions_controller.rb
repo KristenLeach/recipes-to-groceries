@@ -19,7 +19,6 @@ class SessionsController < ApplicationController
     end
 
     def facebook
-        #byebug
         if auth
             @user = User.find_or_create_by(uid: auth['uid']) do |u|
             u.name = auth['info']['name']
