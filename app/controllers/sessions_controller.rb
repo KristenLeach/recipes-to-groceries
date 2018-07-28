@@ -4,16 +4,29 @@ class SessionsController < ApplicationController
         @user = User.new
     end
 
+    #def create
+    #    @user = User.find_by(email: params[:user][:email])
+    #         if @user && @user.authenticate(params[:user][:password])
+    #             session[:user_id] = @user.id
+    #             redirect_to root_path
+    #         else
+    #             byebug
+    #             @messages = @user.errors.full_messages
+    #             render :new 
+     #        end
+    # end
+ 
+
     def create
        if @user = User.find_by(email: params[:user][:email])
             if @user && @user.authenticate(params[:user][:password])
                 session[:user_id] = @user.id
                 redirect_to root_path
             else
+                byebug
                 render :new
             end
         else 
-            @user = User.new
             render :new 
         end
     end
@@ -28,8 +41,8 @@ class SessionsController < ApplicationController
             end
             session[:user_id] = @user.id
             redirect_to root_path
-        else 
-            @user = User.new
+        else
+            @messages = @user.errors.full_messages
             render :new
         end 
     end

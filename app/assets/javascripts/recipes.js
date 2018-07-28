@@ -9,20 +9,22 @@ $(function(){
             this.description = data.description
             this.ingredients = data.ingredients
             this.directions = data.directions
-            this.heart = Array.isArray(json.hearts) && json.hearts[0]
+            this.heart = Array.isArray(data.hearts) && data.hearts[0]
             this.userId = data.user.id
         }
 
         buildCard(){
             let AUTH_TOKEN = $('meta[name=csrf-token]').attr('content');
-            const hearted = `<form class="button_to" method="delete" action="/unheart?recipe_id=${this.id}">
+            const hearted = `<form class="button_to" method="delete" action="/unheart">
                 <input type="hidden" name="authenticity_token" value="${AUTH_TOKEN}">
+                <input type-"hidden" name="heart[recipe_id]" value="${this.id}"
                 <button class="liked" type="submit">
                 <i class="fas fa-heart" id="recipe_${this.id}"></i>
                 </button>
                 </form>`
-            const unhearted = `<form class="button_to" method="post" action="/heart?recipe_id=${this.id}">
+            const unhearted = `<form class="button_to" method="post" action="/heart">
                 <input type="hidden" name="authenticity_token" value="${AUTH_TOKEN}">
+                <input type-"hidden" name="heart[recipe_id]" value="${this.id}"
                 <button class="liked" type="submit">
                 <i class="far fa-heart" id="recipe_${this.id}"></i>
                 </button>
@@ -68,7 +70,7 @@ $(function(){
                     <input type="hidden" name="authenticity_token" value="${AUTH_TOKEN}">
                         <textarea name="comment[content]" id="comment_content"></textarea>
                         <input value="${this.id}" type="hidden" name="comment[recipe_id]" id="comment_recipe_id">
-                        <input value="${this.userId}" type="hidden" name="comment[user_id]" id="comment_user_id">
+                        <input value="${currentUserId}" type="hidden" name="comment[user_id]" id="comment_user_id">
                         <input type="submit" name="commit" value="Post" data-disable-with="Post">
                     </form>
                     <a href="/recipes/${this.id}/comments" id="showComments">Show Comments</a>

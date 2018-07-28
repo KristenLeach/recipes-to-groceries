@@ -19,13 +19,17 @@
 
 
 function attachListeners(){
-    $('.liked').click(heartListeners)
-    $('.indexPages').click(indexListeners)
+    $('.liked button').unbind("click").click(heartListeners)
+    $('.indexPages').unbind("click").click(indexListeners)
     $(".scroll").click(recipeScroll)
     $("#new_comment").submit(newComment)
     $("#showComments").click(showComments)
 }
 
-function currentUser(){
+function currentUserId(){
   return document.body.dataset.id
+}
+
+function currentUserName(){
+  return document.body.dataset.username
 }

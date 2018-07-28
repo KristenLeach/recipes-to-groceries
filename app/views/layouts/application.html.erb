@@ -14,7 +14,7 @@
   <body>
     <ul class="menu">
       <% if logged_in? %>
-      <body data-id="<%= current_user.id %>">
+      <body data-id="<%= current_user.id %>" data-username="<%= current_user.name %>" >
       <li class="link"><%= link_to "Recipes", root_path, class: "indexPages" %>
         <ul class="dropdown">
           <li><%= link_to "Popular Recipes", popular_recipes_path, class: "indexPages" %></li>

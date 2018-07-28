@@ -1,8 +1,8 @@
-<% if @user.errors.any? %>
+<% if @messages != nil %>
   <div id="error_explanation">
     <h2> Sign In Failed </h2>
     <ul>
-    <% @user.errors.full_messages.each do |msg| %>
+    <% @messages.each do |msg| %>
       <li><%= msg %></li>
     <% end %>
     </ul>
@@ -10,7 +10,7 @@
 <% end %>
 
 <div class='signin-form-container'>
-  <%= form_for @user, url: login_path(@user), method: :post do |f|%>
+  <%= form_for User.new, url: login_path(User.new), method: :post do |f|%>
     <%= f.email_field :email, placeholder: "Email" %>
     <%= f.password_field :password, placeholder: "Password" %>
     <%= f.submit "Sign In" %>

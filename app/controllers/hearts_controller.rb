@@ -4,21 +4,17 @@ class HeartsController < ApplicationController
     @user = current_user
     @recipe = Recipe.find(params[:recipe_id])
     @heart = @user.heart!(@recipe)
-    respond_to do |f|
-      f.html
-      f.json (render :json => {heart: @heart, action: 'hearted'})
-    end
+    render :json => {heart: @heart, action: 'hearted'}
   end
 
 def unheart
   @user = current_user
   @heart = @user.hearts.find_by_recipe_id(params[:recipe_id])
   @recipe = Recipe.find(params[:recipe_id])
-  @heart.destroy!
-  respond_to do |f|
-    f.html
-    f.json (render :json => {heart: @heart, action: 'hearted'})
+  if @heart 
+    @heart.destroy!
   end
+  render :json => {heart: @heart, action: 'unhearted'}
 end
 
 end

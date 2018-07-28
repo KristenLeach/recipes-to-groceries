@@ -8,7 +8,10 @@
             this.userImage = json.user.image.image.thumb.url
             this.userName = json.user.name
             this.userId = json.user.id
-            this.heart = Array.isArray(json.hearts) && json.hearts[0]
+            this.hearts = json.hearts || []
+          }
+          get isFavorite(){
+            return !!this.hearts.find((heart) => heart.user_id == currentUserId())
           }
           renderCard(){
             let AUTH_TOKEN = $('meta[name=csrf-token]').attr('content');
@@ -33,7 +36,7 @@
                 <form class="new_meal" id="new_meal" action="/users/${this.userId}/meals" accept-charset="UTF-8" method="post">
                     <input name="utf8" type="hidden" value="✓">
                     <input type="hidden" name="authenticity_token" value="${AUTH_TOKEN}">
-                    <input value="${currentUser()}" type="hidden" name="meal[user_id]" id="meal_user_id">
+                    <input value="${currentUserId()}" type="hidden" name="meal[user_id]" id="meal_user_id">
                     <input value="${this.id}" type="hidden" name="meal[recipe_id]" id="meal_recipe_id">
                     <input type="submit" name="commit" value="Add to Meal Plan" data-disable-with="Add to Meal Plan">
                 </form>
@@ -41,7 +44,7 @@
             <img src= ${this.userImage} class='user-img'>
             <small class='user-link'><a href="/users/${this.userId}">${this.userName}</a></small>
             <div class='liked'>
-                ${this.heart ? hearted : unhearted }
+                ${this.isFavorite ? hearted : unhearted }
             </div>
             </div>`
       }
@@ -49,7 +52,6 @@
 
     function indexListeners(e){
         e.preventDefault()
-        console.log('loading new page')
         const defaultTitle = "<h3> Check out these great recipes! </h3>"
         let title;
         switch(this.text) {
