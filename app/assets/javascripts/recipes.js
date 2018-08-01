@@ -10,26 +10,27 @@ $(function(){
             this.description = data.description
             this.ingredients = data.ingredients
             this.directions = data.directions
-            this.heart = Array.isArray(data.hearts) && data.hearts[0]
             this.userId = data.user.id
-        }
+            this.hearts = data.hearts || []
+          }
+          get isFavorite(){
+            return !!this.hearts.find((heart) => heart.user_id == currentUserId())
+          }
 
         buildCard(){
             let AUTH_TOKEN = $('meta[name=csrf-token]').attr('content');
-            const hearted = `<form class="button_to" method="delete" action="/unheart">
-                <input type="hidden" name="authenticity_token" value="${AUTH_TOKEN}">
-                <input type="hidden" name="heart[recipe_id]" value="${this.id}"
-                <button class="liked" type="submit">
-                <i class="fas fa-heart" id="recipe_${this.id}"></i>
-                </button>
-                </form>`
-            const unhearted = `<form class="button_to" method="post" action="/heart">
-                <input type="hidden" name="authenticity_token" value="${AUTH_TOKEN}">
-                <input type="hidden" name="heart[recipe_id]" value="${this.id}"
-                <button class="liked" type="submit">
-                <i class="far fa-heart" id="recipe_${this.id}"></i>
-                </button>
-                </form>`
+            const hearted = `<form class="button_to" method="delete" action="/unheart?recipe_id=${this.id}">
+            <input type="hidden" name="authenticity_token" value="${AUTH_TOKEN}">
+            <button class="liked" type="submit">
+            <i class="fas fa-heart" id="recipe_${this.id}"></i>
+            </button>
+            </form>`
+            const unhearted = `<form class="button_to" method="post" action="/heart?recipe_id=${this.id}">
+            <input type="hidden" name="authenticity_token" value="${AUTH_TOKEN}">
+            <button class="liked" type="submit">
+            <i class="far fa-heart" id="recipe_${this.id}"></i>
+            </button>
+            </form>`
             const previous = `<a href="/recipes/${this.id-1}" class="scroll">&#8249; Previous</a>`
             const next = `<a href="/recipes/${this.id+1}" class="scroll">Next &#8250;</a>`
             return `
@@ -46,7 +47,7 @@ $(function(){
                     <label class='show'>Directions:</label>
                         <p class='show-directions'>${this.directions}</p>
                 <div class='liked'>
-                        ${this.heart ? hearted : unhearted }
+                        ${this.isFavorite ? hearted : unhearted }
                 </div>
                 <div class='button'>
                 <form class="new_meal" id="new_meal" action="/users/${currentUserId()}/meals" accept-charset="UTF-8" method="post">
