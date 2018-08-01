@@ -33,7 +33,7 @@
             <a href="/recipes/${this.id}" class='name'>${this.name}</a>
             <p class='description'>${this.description}</p>
             <div class='button'>
-                <form class="new_meal" id="new_meal" action="/users/${this.userId}/meals" accept-charset="UTF-8" method="post">
+                <form class="new_meal" id="new_meal" action="/users/${currentUserId()}/meals" accept-charset="UTF-8" method="post">
                     <input name="utf8" type="hidden" value="✓">
                     <input type="hidden" name="authenticity_token" value="${AUTH_TOKEN}">
                     <input value="${currentUserId()}" type="hidden" name="meal[user_id]" id="meal_user_id">

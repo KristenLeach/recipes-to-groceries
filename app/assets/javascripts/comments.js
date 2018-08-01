@@ -1,5 +1,6 @@
     class Comment{
         constructor(data){
+            debugger
             this.userName = data.user.name
             this.recipeId = data.recipe_id
             this.userId = data.user_id

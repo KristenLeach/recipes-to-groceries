@@ -1,3 +1,4 @@
+//find a way to stop 'next' button at length of recipe array 
 $(function(){
     attachListeners()
 })
@@ -48,7 +49,7 @@ $(function(){
                         ${this.heart ? hearted : unhearted }
                 </div>
                 <div class='button'>
-                <form class="new_meal" id="new_meal" action="/users/${this.userId}/meals" accept-charset="UTF-8" method="post">
+                <form class="new_meal" id="new_meal" action="/users/${currentUserId()}/meals" accept-charset="UTF-8" method="post">
                     <input name="utf8" type="hidden" value="✓">
                     <input type="hidden" name="authenticity_token" value="${AUTH_TOKEN}">
                     <input value="${currentUser()}" type="hidden" name="meal[user_id]" id="meal_user_id">
@@ -70,7 +71,7 @@ $(function(){
                     <input type="hidden" name="authenticity_token" value="${AUTH_TOKEN}">
                         <textarea name="comment[content]" id="comment_content"></textarea>
                         <input value="${this.id}" type="hidden" name="comment[recipe_id]" id="comment_recipe_id">
-                        <input value="${currentUserId}" type="hidden" name="comment[user_id]" id="comment_user_id">
+                        <input value="${currentUserId()}" type="hidden" name="comment[user_id]" id="comment_user_id">
                         <input type="submit" name="commit" value="Post" data-disable-with="Post">
                     </form>
                     <a href="/recipes/${this.id}/comments" id="showComments">Show Comments</a>
