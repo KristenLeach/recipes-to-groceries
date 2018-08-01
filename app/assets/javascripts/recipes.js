@@ -52,7 +52,7 @@ $(function(){
                 <form class="new_meal" id="new_meal" action="/users/${currentUserId()}/meals" accept-charset="UTF-8" method="post">
                     <input name="utf8" type="hidden" value="✓">
                     <input type="hidden" name="authenticity_token" value="${AUTH_TOKEN}">
-                    <input value="${currentUser()}" type="hidden" name="meal[user_id]" id="meal_user_id">
+                    <input value="${currentUserId()}" type="hidden" name="meal[user_id]" id="meal_user_id">
                     <input value="${this.id}" type="hidden" name="meal[recipe_id]" id="meal_recipe_id">
                     <input type="submit" name="commit" value="Add to Meal Plan" data-disable-with="Add to Meal Plan">
                 </form>
