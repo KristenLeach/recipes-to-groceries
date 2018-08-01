@@ -18,14 +18,14 @@ $(function(){
             let AUTH_TOKEN = $('meta[name=csrf-token]').attr('content');
             const hearted = `<form class="button_to" method="delete" action="/unheart">
                 <input type="hidden" name="authenticity_token" value="${AUTH_TOKEN}">
-                <input type-"hidden" name="heart[recipe_id]" value="${this.id}"
+                <input type="hidden" name="heart[recipe_id]" value="${this.id}"
                 <button class="liked" type="submit">
                 <i class="fas fa-heart" id="recipe_${this.id}"></i>
                 </button>
                 </form>`
             const unhearted = `<form class="button_to" method="post" action="/heart">
                 <input type="hidden" name="authenticity_token" value="${AUTH_TOKEN}">
-                <input type-"hidden" name="heart[recipe_id]" value="${this.id}"
+                <input type="hidden" name="heart[recipe_id]" value="${this.id}"
                 <button class="liked" type="submit">
                 <i class="far fa-heart" id="recipe_${this.id}"></i>
                 </button>
