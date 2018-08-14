@@ -2,7 +2,10 @@
 
 Welcome to Recipes to Groceries! This app allows users to add recipes to a database. From there, recipes can be added to a user's meal plan, and a grocery list of items needed is created for the user. 
 
-## Getting Started
+## To Run this Program from Heroku: 
+```https://recipes-to-groceries.herokuapp.com/```
+
+## To Run this Program Locally:
 
 ```Fork and clone this repo```
 
