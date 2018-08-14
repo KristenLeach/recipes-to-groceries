@@ -76,4 +76,32 @@
         })
     }
 
+    function alphabetical(e){
+        e.preventDefault()
+        $.getJSON(this.href).success(function(data){
+            //const recipes = alphabetizeData(data)
+                const alphRecipes = data.sort(alphabetizeData()).map(recipeJSON => { 
+                const recipeObj = new Recipe(recipeJSON)
+                return recipeObj.renderCard()
+            })
+
+            $('.content').html(`<div class="recipe-container">${alphRecipes.join('')}</div>`)
+            attachListeners()
+        })
+    }
+
+    function alphabetizeData(data){
+        const recipes = data.sort(function(a, b) {
+            var nameA = a.name.toUpperCase(); // ignore upper and lowercase
+            var nameB = b.name.toUpperCase(); // ignore upper and lowercase
+            if (nameA < nameB) {
+              return -1;
+            }
+            if (nameA > nameB) {
+              return 1;
+            }
+            return 0;
+          });
+          return recipes
+    }
 

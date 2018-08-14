@@ -1,6 +1,5 @@
     class Comment{
         constructor(data){
-            debugger
             this.userName = data.user.name
             this.recipeId = data.recipe_id
             this.userId = data.user_id
@@ -15,7 +14,6 @@
     }
     function showAllComments(path){
         $.getJSON(path).success(function(data){
-            debugger
             const comments = data.map( commentJSON => { 
                 const commentObj = new Comment(commentJSON)
                 return commentObj.addCommentToList()
@@ -36,7 +34,6 @@
 
     function showComments(e){
         e.preventDefault()
-        debugger
         showAllComments(this.href)
     }
 

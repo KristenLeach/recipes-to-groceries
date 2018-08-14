@@ -24,6 +24,7 @@ function attachListeners(){
     $(".scroll").click(recipeScroll)
     $("#new_comment").submit(newComment)
     $("#showComments").click(showComments)
+    $(".alphabetical").click(alphabetical)
 }
 
 function currentUserId(){

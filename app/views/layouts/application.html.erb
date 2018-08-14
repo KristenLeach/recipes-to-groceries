@@ -19,6 +19,7 @@
         <ul class="dropdown">
           <li><%= link_to "Popular Recipes", popular_recipes_path, class: "indexPages" %></li>
           <li><%= link_to "Recipes you Love", favorites_path, class: "indexPages" %></li>
+          <li><%= link_to "Alphabetical Recipes", root_path, class: "alphabetical" %></li>
           </ul>
         </li>
         <li><%= link_to "Create Recipe", new_user_recipe_path(current_user, @recipe = Recipe.new) %></li>
